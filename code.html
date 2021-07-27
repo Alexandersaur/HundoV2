@@ -111,8 +111,8 @@ function displayNumbers(numbers){
         }else{
             className = "odd";
         }
-        //--This line does not render correctly with Prism, see source--//
-        templateRows += `<tr><td class="${className}">${number}</td></tr>`;
+        //--Use Template Literals to insert valid HTML code--//
+        templateRows += `&lt;tr>&lt;td class="${className}">${number}&lt;/td>&lt;/tr>`;
     }
     document.getElementById("results").innerHTML = templateRows;
 }
