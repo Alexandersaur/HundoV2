@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>[App Name]: A Coding Project by Jeremy Steward</title>
+    <title>HUNDO: A Coding Project by Jeremy Steward</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -60,26 +60,72 @@
     <main class="flex-shrink-0">
         <div class="jumbotron container-fluid">
             <div class="container text-white text-center logofont">
-                <p class="mt-10"><span id="span1">[App Name]</span></p>
+                <p class="mt-10"><span id="span1">HUNDO</span></p>
             </div>
         </div>
         <div class="container py-4 px-5 mt-0 bodyfont">
-            <h2 class="border-1 border-bottom border-dark">The Code for [App Name]</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for HUNDO</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //-- Call Hello World --//
-                            function HelloWorld(){
-                                alert("Hello World");
-                            }
+                            //--Get the values from the user (controller function)--//
+function getValues(){
+    //--Get values from the page--//
+    let startValue = document.getElementById("startValue").value;
+    let endValue = document.getElementById("endValue").value;
+
+    //--Ensure values are integers (input validation)--//
+    startValue = parseInt(startValue);
+    endValue = parseInt(endValue);
+    if(Number.isInteger(startValue) && Number.isInteger(endValue)){
+        //--Call generateNumbers function--//
+        let numbers = generateNumbers(startValue, endValue);
+        //--Call displayNumbers function--//
+        displayNumbers(numbers);
+    }else{
+        alert("You must enter integers");
+    }
+}
+
+//--Generate the numbers from startValue to endValue (logic function)--//
+function generateNumbers(sValue, eValue){
+    let numbers = [];
+    //--Get all numbers from start to end--//
+    for(let index = sValue; index <= eValue; index++){
+        //--Execute in a loop until index = eValue--//
+        numbers.push(index);
+    }
+    return numbers;
+}
+
+//--Display the numbers and mark the even numbers in bold (display function)--//
+function displayNumbers(numbers){
+    let templateRows = "";
+    for (let index = 0; index < numbers.length; index++) {
+        let className = "even";
+        let number = numbers[index];
+        //--Check if number is even, format and display it in a table--//
+        if(number % 2 == 0){
+            className = "even";
+        }else{
+            className = "odd";
+        }
+        //--This line does not render correctly with Prism, see source--//
+        templateRows += `<tr><td class="${className}">${number}</td></tr>`;
+    }
+    document.getElementById("results").innerHTML = templateRows;
+}
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <h5>getValues()</h5>
+                    <p>This is a function that was created to collect all of the relevant information from the user via the input elements contained within the form. Additionally, it will 'clean' the information coming in to make sure that it has data with the correct format, in this case we need integers. It will display the information after calling the other two functions to perform their actions.</p>
+                    <h5>generateNumbers()</h5>
+                    <p>This is a function that was designed to determine the total number output. Using a For Loop, this function will continue to increment the indicies within the locally-scoped Array until the beginning and end values are equal.</p>
+                    <h5>displayNumbers()</h5>
+                    <p>The final function was written to handle the formatting required by this coding challenge. In order to determine whether a particular number is even, its remainder is compared to zero after it has been divided by two. It is subsequently given a semantic tag that appears within the CSS file for further alteration. Each data point is given a Template Literal in order to generate table entries within the HTML code.</p>
                 </div>
             </div>
         </div>

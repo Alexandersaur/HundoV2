@@ -12,13 +12,14 @@ main>.container {
 :root {
     --primaary-color: #545863;
     --primary-color: #335C67;
+    --primaary-color: #b42424;
     --secondary-color: #b42424;
     --dark-color: #292929;
     --white-color: #e7e7e7;
 }
 
 body {
-    color: var(--dark-color);
+    color: var(--primary-color);
 }
 
 nav {
@@ -83,6 +84,12 @@ pre[class*="language-"] {
 
 .bodyfont{
     font-family: 'Lato', sans-serif;
+    color: var(--parimary-color)
+}
+
+.even{
+    font-weight: bold;
+    color: var(--secondary-color);
 }
 
 .jumbotron {
@@ -95,7 +102,7 @@ pre[class*="language-"] {
     text-transform: uppercase;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 10px 23px rgba(0,0,0,0.1);
-    -webkit-text-stroke: 1px var(--secondary-color);
+    -webkit-text-stroke: 1px white;
 }
 
 #span1 {
@@ -103,5 +110,9 @@ pre[class*="language-"] {
     font-size: 90px;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    color: white;
+    color: var(--secondary-color);
+}
+
+#appcontainer{
+    padding: 30px 15px 0 !important;
 }
